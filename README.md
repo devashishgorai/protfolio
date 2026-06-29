@@ -1,4 +1,4 @@
-
+<div align="center">
 
 # 🚀 Devashish Gorai Portfolio
 
