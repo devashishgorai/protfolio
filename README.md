@@ -1,6 +1,6 @@
-<img width="2940" height="1492" alt="image" src="https://github.com/user-attachments/assets/e4446f59-b96c-4ade-939e-20c146297ed5" /><div align="center">
 
-# 🚀 Devashish Kumar Portfolio
+
+# 🚀 Devashish Gorai Portfolio
 
 ### A modern, premium portfolio built with Next.js, TypeScript & Tailwind CSS.
 
