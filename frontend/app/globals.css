@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --background: #090014;
+  --foreground: #f8f4ff;
+  --muted: #bcb4d9;
+  --card: rgba(255, 255, 255, 0.06);
+  --border: rgba(255, 255, 255, 0.12);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-heading);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--background);
+  }
+
+  body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.23), transparent 30%),
+      radial-gradient(circle at 80% 10%, rgba(99, 102, 241, 0.2), transparent 28%),
+      radial-gradient(circle at 50% 70%, rgba(168, 85, 247, 0.12), transparent 35%),
+      linear-gradient(180deg, #12081f 0%, #090014 38%, #06030c 100%);
+    color: var(--foreground);
+    font-family: var(--font-body);
+  }
+
+  ::selection {
+    background: rgba(168, 85, 247, 0.35);
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  .premium-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .glass-panel {
+    @apply border border-white/10 bg-white/5 shadow-[0_30px_120px_rgba(16,6,34,0.55)] backdrop-blur-2xl;
+  }
+
+  .glass-panel-soft {
+    @apply border border-white/8 bg-white/4 shadow-[0_20px_80px_rgba(16,6,34,0.35)] backdrop-blur-xl;
+  }
+
+  .section-kicker {
+    @apply text-xs font-semibold uppercase tracking-[0.35em] text-violet-200/80;
+  }
+
+  .premium-title {
+    @apply font-[family-name:var(--font-heading)] text-4xl font-medium tracking-[-0.04em] text-white sm:text-5xl lg:text-6xl;
+  }
+
+  .premium-subtitle {
+    @apply max-w-2xl text-base leading-7 text-white/68 sm:text-lg;
+  }
+
+  .premium-card {
+    @apply rounded-[28px] border border-white/10 bg-white/6 backdrop-blur-2xl;
+  }
+
+  .premium-pill {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-white/82 backdrop-blur-xl;
+  }
+}
