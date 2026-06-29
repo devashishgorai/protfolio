@@ -1,4 +1,4 @@
-<div align="center">
+<img width="2940" height="1492" alt="image" src="https://github.com/user-attachments/assets/e4446f59-b96c-4ade-939e-20c146297ed5" /><div align="center">
 
 # 🚀 Devashish Kumar Portfolio
 
@@ -91,7 +91,9 @@ npm run dev
 
 ## 📸 Preview
 
-![Uploading image.png…]()
+<img width="1972" height="966" alt="image" src="https://github.com/user-attachments/assets/02f134a0-2bb9-47b9-bb8e-82249dabdb45" />
+
+
 
 
 ---
