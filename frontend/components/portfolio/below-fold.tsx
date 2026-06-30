@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
 import type { ReactNode } from "react";
@@ -30,11 +31,56 @@ function SectionFrame({
 
 function VisualCard({ visual }: { visual: (typeof projects)[number]["visual"] }) {
   const copy =
-    visual === "birthday"
+    visual === "jet-engine"
+      ? "A mission control dashboard with an active fleet overview."
+      : visual === "birthday"
       ? "A soft glowing celebration moment."
       : visual === "bert"
         ? "An AI pipeline tuned for context and clarity."
-        : "A motion-first portfolio built for polish.";
+        : visual === "vyapo"
+          ? "A laptop and mobile experience, displayed side by side."
+          : "A motion-first portfolio built for polish.";
+
+  if (visual === "jet-engine") {
+    return (
+      <div className="relative min-h-[360px] overflow-hidden rounded-[32px] border border-white/10 bg-[#070b12] p-4 shadow-[0_30px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-5">
+        <div className="relative h-full min-h-[360px] overflow-hidden rounded-[28px] border border-slate-800 bg-black">
+          <Image
+            src="/images/jet-engine.png"
+            alt="Jet Engine dashboard preview"
+            fill
+            priority
+            sizes="(min-width: 1280px) 50vw, (min-width: 1024px) 48vw, 92vw"
+            className="object-cover object-top"
+          />
+        </div>
+        <div className="pointer-events-none absolute left-6 top-6 rounded-full border border-sky-400/25 bg-sky-400/12 px-4 py-2 text-xs uppercase tracking-[0.28em] text-sky-300">
+          Live telemetry
+        </div>
+      </div>
+    );
+  }
+
+  if (visual === "vyapo") {
+    return (
+      <div className="relative min-h-[360px] overflow-hidden rounded-[32px] border border-white/10 bg-[#f4efe9] p-4 shadow-[0_30px_80px_rgba(0,0,0,0.24)] backdrop-blur-2xl sm:p-5">
+        <div className="relative h-full min-h-[360px] overflow-hidden rounded-[28px] border border-slate-200 bg-white">
+          <Image
+            src="/images/vyapo.png"
+            alt="Vyapo product interface"
+            fill
+            priority
+            sizes="(min-width: 1280px) 50vw, (min-width: 1024px) 48vw, 92vw"
+            className="object-cover object-top"
+          />
+        </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#f4efe9] to-transparent" />
+        <div className="pointer-events-none absolute right-8 top-8 rounded-full border border-emerald-400/30 bg-emerald-400/12 px-4 py-2 text-xs uppercase tracking-[0.28em] text-emerald-300">
+          Real preview
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative min-h-[360px] overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-5 backdrop-blur-2xl">
@@ -54,7 +100,7 @@ function VisualCard({ visual }: { visual: (typeof projects)[number]["visual"] })
       </div>
     </div>
   );
-}
+  }
 
 function ProjectSection() {
   return (
@@ -303,7 +349,17 @@ export function BelowFold() {
 
       <footer className="relative z-10 border-t border-white/10 py-10">
         <div className="premium-shell flex flex-col gap-3 text-sm text-white/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>Designed &amp; Developed by Devashish Kumar</p>
+          <p>
+            Designed &amp; Developed by{" "}
+            <a
+              href="https://www.linkedin.com/in/devashishofficial/"
+              target="_blank"
+              rel="noreferrer"
+              className="text-white/85 underline decoration-white/30 underline-offset-4 transition-colors hover:text-white hover:decoration-white/70"
+            >
+              Deavshish Gorai
+            </a>
+          </p>
           <p>© 2026 All Rights Reserved.</p>
         </div>
       </footer>

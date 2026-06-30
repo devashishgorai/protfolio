@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Devashish Kumar" }],
   creator: "Devashish Kumar",
   icons: {
-    icon: "/images/metaiconpng.png",
-    shortcut: "/images/metaiconpng.png",
-    apple: "/images/metaiconpng.png",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "Devashish Kumar | Portfolio",

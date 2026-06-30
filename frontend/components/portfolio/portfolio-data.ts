@@ -9,6 +9,7 @@ import {
   Trophy,
   Workflow,
 } from "lucide-react";
+import { FaAws } from "react-icons/fa";
 import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import {
   SiCplusplus,
@@ -21,6 +22,7 @@ import {
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
+  SiPostgresql,
   SiPostman,
   SiPython,
   SiReact,
@@ -41,7 +43,7 @@ export type SocialLink = {
   icon: IconComponent;
 };
 
-export type ProjectVisual = "birthday" | "bert" | "portfolio";
+export type ProjectVisual = "birthday" | "bert" | "portfolio" | "vyapo" | "jet-engine";
 
 export type IconComponent = ComponentType<{ className?: string }>;
 
@@ -101,7 +103,7 @@ export const navigation: NavigationItem[] = [
 ];
 
 export const socialLinks: SocialLink[] = [
-  { label: "Email", href: "mailto:devashish@example.com", icon: FaEnvelope },
+  { label: "Email", href: "mailto:devashishgorai10@gmail.com", icon: FaEnvelope },
   { label: "LinkedIn", href: "https://www.linkedin.com/in/devashishofficial/", icon: FaLinkedinIn },
   { label: "GitHub", href: "https://github.com/devashish", icon: FaGithub },
   { label: "Resume", href: "/resume", icon: Sparkles },
@@ -180,38 +182,27 @@ export const journeyCards: JourneyCard[] = [
 
 export const projects: Project[] = [
   {
-    title: "Birthday Wish Website",
-    description: "Modern responsive birthday website with animations.",
-    tech: ["HTML", "CSS", "JavaScript", "Next.js"],
-    github: "https://github.com/devashish/birthday-wish-website",
-    live: "https://birthday-wish-website.vercel.app",
-    visual: "birthday",
-    accent: "from-fuchsia-500/35 via-violet-500/20 to-indigo-500/20",
-    statLabel: "Celebration-ready",
+    title: "Jet Engine",
+    description: "A modern web project with a polished responsive experience.",
+    tech: ["Next.js", "React", "TypeScript", "Tailwind"],
+    github: "https://github.com/devashishgorai/jet_engine",
+    live: "https://jet-engine-lac.vercel.app/",
+    visual: "jet-engine",
+    accent: "from-amber-400/30 via-orange-500/20 to-fuchsia-500/20",
+    statLabel: "Latest build",
     statValue: "01",
   },
   {
-    title: "Fake News Detection using BERT",
-    description: "AI-powered fake news detection system built with Python, Transformers, BERT and Streamlit.",
-    tech: ["Python", "Transformers", "BERT", "Streamlit"],
-    github: "https://github.com/devashish/fake-news-detection-bert",
-    live: "https://fake-news-detection-bert.streamlit.app",
-    visual: "bert",
-    accent: "from-cyan-500/25 via-indigo-500/20 to-fuchsia-500/20",
-    reverse: true,
-    statLabel: "AI pipeline",
-    statValue: "04",
-  },
-  {
-    title: "Portfolio Website",
-    description: "This portfolio showcasing my skills and projects.",
+    title: "Vyapo",
+    description: "A clean and responsive website for the Vyapo project.",
     tech: ["Next.js", "React", "TypeScript", "Tailwind"],
-    github: "https://github.com/devashish/portfolio",
-    live: "https://devashish-portfolio.vercel.app",
-    visual: "portfolio",
-    accent: "from-emerald-400/30 via-cyan-500/20 to-indigo-500/20",
-    statLabel: "Sections",
-    statValue: "07",
+    github: "https://github.com/devashishgorai/Vyapo",
+    live: "https://www.vyapo.tech/",
+    visual: "vyapo",
+    accent: "from-cyan-500/25 via-blue-500/20 to-indigo-500/20",
+    reverse: true,
+    statLabel: "Live product",
+    statValue: "02",
   },
 ];
 
@@ -239,7 +230,14 @@ export const skillGroups: SkillGroup[] = [
   },
   {
     label: "Database",
-    items: [{ label: "MongoDB", icon: SiMongodb, accent: "from-emerald-400/35 to-green-500/20" }],
+    items: [
+      { label: "MongoDB", icon: SiMongodb, accent: "from-emerald-400/35 to-green-500/20" },
+      { label: "PostgreSQL", icon: SiPostgresql, accent: "from-sky-500/35 to-indigo-500/20" },
+    ],
+  },
+  {
+    label: "Clouds",
+    items: [{ label: "AWS", icon: FaAws, accent: "from-orange-400/35 to-amber-500/20" }],
   },
   {
     label: "Tools",

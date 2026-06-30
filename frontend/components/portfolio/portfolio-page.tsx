@@ -134,51 +134,103 @@ function HeroAvatar() {
 }
 
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const update = () => setScrolled(window.scrollY > 16);
+    let frameId = 0;
+
+    const update = () => {
+      const progress = Math.min(window.scrollY / 220, 1);
+      setScrollProgress(progress);
+    };
+
+    const handleScroll = () => {
+      window.cancelAnimationFrame(frameId);
+      frameId = window.requestAnimationFrame(update);
+    };
+
     update();
-    window.addEventListener("scroll", update, { passive: true });
-    return () => window.removeEventListener("scroll", update);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.cancelAnimationFrame(frameId);
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const sectionIds = navigation.map((item) => item.href.replace("#", ""));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible?.target instanceof HTMLElement) {
+          setActiveSection(visible.target.id);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "-38% 0px -48% 0px",
+        threshold: [0.15, 0.25, 0.4, 0.6],
+      },
+    );
+
+    sectionIds.forEach((sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        scrolled
-          ? "border-b border-white/10 bg-[#090014]/78 py-2 backdrop-blur-2xl"
-          : "border-b border-white/10 bg-[#090014]/28 py-5 backdrop-blur-xl"
-      }`}
-    >
-      <div className="w-full px-5 sm:px-8 lg:px-10">
-        <div className="mx-auto flex max-w-7xl items-center justify-end">
-          <nav
-            className={`hidden items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl md:flex ${
-              scrolled ? "scale-[0.97]" : "scale-100"
-            } transition-transform duration-300`}
-          >
-            {navigation.map((item) => (
+    <header className="sticky top-0 z-40 w-full px-4 py-4 sm:px-6 lg:px-8">
+      <div
+        className="mx-auto flex max-w-[1800px] items-center justify-between gap-4 rounded-[28px] border border-white/10 bg-[#120722]/92 px-4 py-4 shadow-[0_18px_80px_rgba(0,0,0,0.35)] backdrop-blur-2xl transition-all duration-300 sm:px-6 lg:px-8"
+        style={{
+          transform: `scale(${1 - scrollProgress * 0.04})`,
+          transformOrigin: "top center",
+          borderRadius: `${28 - scrollProgress * 4}px`,
+          paddingTop: `${16 - scrollProgress * 5}px`,
+          paddingBottom: `${16 - scrollProgress * 5}px`,
+        }}
+      >
+        <a
+          href="#home"
+          className="inline-flex items-center gap-3 rounded-full px-2 py-1 text-white/90 transition-colors hover:text-white"
+        >
+          <span className="flex h-3 w-3 rounded-full bg-cyan-400 shadow-[0_0_18px_rgba(34,211,238,0.95)]" />
+          <span className="font-[family-name:var(--font-heading)] text-lg font-semibold tracking-[-0.04em] uppercase">
+            Devashish_Gorai
+          </span>
+        </a>
+
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
+          {navigation.map((item) => {
+            const sectionId = item.href.replace("#", "");
+            const active = activeSection === sectionId;
+            return (
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-full px-4 py-2 text-sm text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                className={`rounded-full px-5 py-2 text-[13px] font-semibold tracking-[0.3em] uppercase transition-all duration-300 ${
+                  active
+                    ? "border border-cyan-400/40 bg-cyan-400/10 text-cyan-300 shadow-[0_0_28px_rgba(34,211,238,0.24)]"
+                    : "text-white/55 hover:text-white"
+                }`}
+                aria-current={active ? "page" : undefined}
               >
                 {item.label}
               </a>
-            ))}
-          </nav>
+            );
+          })}
+        </nav>
 
-          <a
-            href="#contact"
-            className={`inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-4 py-2 text-sm text-white/82 backdrop-blur-xl md:hidden ${
-              scrolled ? "scale-[0.95]" : "scale-100"
-            } transition-transform duration-300`}
-          >
-            <Sparkles className="h-4 w-4 text-violet-300" />
-            Contact
-          </a>
-        </div>
       </div>
     </header>
   );
@@ -216,21 +268,6 @@ export function PortfolioPage() {
                     <p className="text-[15px] font-medium tracking-[0.01em] text-white/95 sm:text-[18px]">
                       Hello! I Am Devashish!
                     </p>
-                    <svg
-                      className="absolute -left-[300px] -top-2 hidden h-[210px] w-[360px] text-white/60 lg:block"
-                      viewBox="0 0 360 210"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M320 34C286 34 244 46 202 72C168 93 134 115 86 138"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                      />
-                      <path d="M86 138L104 133" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                      <path d="M86 138L97 152" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                    </svg>
                   </div>
                   <p className="text-[15px] font-medium tracking-[0.01em] text-white/90 sm:text-[18px] lg:pl-8">
                     A Engineer who
