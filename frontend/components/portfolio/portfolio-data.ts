@@ -143,7 +143,7 @@ export const educationHighlights = [
   },
   {
     label: "Current Year",
-    value: "Second Year",
+    value: "Third Year",
   },
 ];
 
