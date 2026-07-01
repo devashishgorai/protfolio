@@ -204,6 +204,17 @@ export const projects: Project[] = [
     statLabel: "Live product",
     statValue: "02",
   },
+  {
+    title: "BERT Fake News Detector",
+    description: "A machine learning project that detects fake news using a fine-tuned BERT model.",
+    tech: ["BERT", "Python", "NLP", "Machine Learning"],
+    github: "https://github.com/devashishgorai/bert-fake-news-detector",
+    live: "https://bert-fake-news-detector.vercel.app/",
+    visual: "bert",
+    accent: "from-fuchsia-500/25 via-pink-500/20 to-rose-500/20",
+    statLabel: "ML project",
+    statValue: "03",
+  },
 ];
 
 export const skillGroups: SkillGroup[] = [

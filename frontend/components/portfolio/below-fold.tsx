@@ -82,6 +82,53 @@ function VisualCard({ visual }: { visual: (typeof projects)[number]["visual"] })
     );
   }
 
+  if (visual === "bert") {
+    return (
+      <div className="relative min-h-[360px] overflow-hidden rounded-[32px] border border-white/10 bg-[#0c1020] p-4 shadow-[0_30px_80px_rgba(0,0,0,0.28)] backdrop-blur-2xl sm:p-5">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,211,238,0.22),transparent_35%),radial-gradient(circle_at_80%_20%,rgba(244,114,182,0.16),transparent_32%),linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01))]" />
+        <div className="relative flex h-full min-h-[360px] flex-col justify-between overflow-hidden rounded-[28px] border border-cyan-300/15 bg-[#11162a] p-6">
+          <div className="flex items-start justify-between gap-4">
+            <div>
+              <p className="text-xs uppercase tracking-[0.32em] text-cyan-200/70">BERT analyzer</p>
+              <p className="mt-3 max-w-sm text-2xl leading-tight text-white">
+                Paste a news story and get an instant fake-news prediction.
+              </p>
+            </div>
+            <div className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-4 py-2 text-xs uppercase tracking-[0.28em] text-cyan-100">
+              NLP
+            </div>
+          </div>
+
+          <div className="mt-6 rounded-[24px] border border-white/10 bg-black/25 p-4">
+            <div className="flex items-center justify-between gap-4 text-sm text-white/58">
+              <span>Model confidence</span>
+              <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.24em]">
+                Production preview
+              </span>
+            </div>
+            <div className="mt-4 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
+              <div className="rounded-3xl border border-rose-400/20 bg-rose-400/10 p-4">
+                <p className="text-xs uppercase tracking-[0.3em] text-rose-100/70">Prediction</p>
+                <p className="mt-3 text-3xl font-semibold text-white">FAKE</p>
+                <p className="mt-2 text-sm text-white/64">BERT flagged the article as likely misleading.</p>
+              </div>
+              <div className="grid gap-4">
+                <div className="rounded-3xl border border-white/10 bg-white/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/50">Fake</p>
+                  <p className="mt-3 text-2xl font-semibold text-white">61.41%</p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-white/6 p-4">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/50">Real</p>
+                  <p className="mt-3 text-2xl font-semibold text-white">38.59%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="relative min-h-[360px] overflow-hidden rounded-[32px] border border-white/10 bg-white/5 p-5 backdrop-blur-2xl">
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(168,85,247,0.18),transparent_55%)]" />
